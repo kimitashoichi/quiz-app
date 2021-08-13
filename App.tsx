@@ -19,7 +19,6 @@ export default function App() {
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Answer" component={Answer} />
       </Stack.Navigator>
-      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }

@@ -24,7 +24,6 @@ export const Title = (props: any) => {
             <Text style={styles.buttonText}>スタート</Text>
           </TouchableOpacity>
         </View>
-        <StatusBar style="auto" />
       </View>
     </SafeAreaView>
   );
