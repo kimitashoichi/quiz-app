@@ -8,15 +8,16 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export const Main = () => {
+interface Question {
+  sentence: string;
+}
+
+export const Question = (question: Question) => {
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Text>Main Screen</Text>
-        <StatusBar style="auto" />
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text style={styles.questionText}>{question.sentence}</Text>
+    </View>
   );
 }
 
@@ -27,4 +28,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  questionText: {
+    fontSize: 20,
+    overflow: 'scroll',
+    width: 300,
+  }
 });
