@@ -7,32 +7,56 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { Problem } from './Answer';
+
+const mockData: Problem = {
+  selection: [
+    {
+      sentence: "A",
+      flag: false,
+    },
+    {
+      sentence: "B",
+      flag: false,
+    },
+    {
+      sentence: "C",
+      flag: false,
+    },
+    {
+      sentence: "ANS",
+      flag: true,
+    },
+  ],
+  question: 'samplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesample',
+}
+
 export const Menu = (props: any) => {
   const { navigation } = props;
+  
 
-  function gotoMain () {
-    navigation.navigate('Main');
+  function gotoAnswer () {
+    navigation.navigate('Answer', {
+      selection: mockData.selection,
+      question: mockData.question,
+    });
   }
 
   return (
-    <SafeAreaView>
       <View style={styles.container}>
         <Text style={styles.title}>Menu</Text>
-
         <View>
-          <TouchableOpacity style={styles.button} onPress={gotoMain} >
+          <TouchableOpacity style={styles.button} onPress={() => gotoAnswer()} >
             <Text style={styles.buttonText}>初級</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={gotoMain}>
+          <TouchableOpacity style={styles.button} onPress={() => gotoAnswer()}>
             <Text style={styles.buttonText}>中級</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={gotoMain}>
+          <TouchableOpacity style={styles.button} onPress={() => gotoAnswer()}>
             <Text style={styles.buttonText}>上級</Text>
           </TouchableOpacity>
         </View>
-
       </View>
-    </SafeAreaView>
   );
 }
 

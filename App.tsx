@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Title } from './src/screen/Title';
 import { Menu } from './src/screen/Menu';
 import { Main } from './src/screen/Main';
+import { Answer } from './src/screen/Answer';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="Title" component={Title} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Answer" component={Answer} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
