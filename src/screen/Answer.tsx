@@ -22,10 +22,16 @@ export const Answer = (props: any) => {
   const { route } = props;
 
   const [count, setCount] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
   const [questions, setQuestions] = useState<Problem[]>(route.params.props);
 
-  const addCount = () => {
-    setCount(count+1)
+  // 正答数を判別・カウント、次の問題へ進むためのカウントを追加
+  const checkAnswerAndAddCount = (flag: boolean) => {
+    setCount(count+1);
+    if (flag) {
+      setCorrectCount(correctCount+1)
+    }
+    console.log(correctCount);
   }
 
   return (
@@ -40,7 +46,7 @@ export const Answer = (props: any) => {
           <View style={styles.childBox}>
             <Selection
               selection={questions[count].selection}
-              setCount={addCount} />
+              checkAnswer={checkAnswerAndAddCount}/>
           </View>
         </View>
 

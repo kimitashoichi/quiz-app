@@ -13,11 +13,11 @@ export interface Answer {
     sentence: string;
     flag: boolean;
   }[];
-  setCount: any; // TODO:型付けする
+  checkAnswer: any; // TODO:型付けする
 }
 
 export const Selection = (props: Answer) => {
-  const { setCount } = props;
+  const { checkAnswer } = props;
   const [selections, setSelections] = useState(props.selection);
 
   return (
@@ -26,7 +26,7 @@ export const Selection = (props: Answer) => {
           { selections.map((val) => {
             return (
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={setCount}>
+                <Text style={styles.buttonText} onPress={() => checkAnswer(val.flag)}>
                   {val.sentence}
                 </Text>
               </TouchableOpacity>
