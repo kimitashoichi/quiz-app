@@ -7,38 +7,14 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { Problem } from './Answer';
-
-const mockData: Problem = {
-  selection: [
-    {
-      sentence: "A",
-      flag: false,
-    },
-    {
-      sentence: "B",
-      flag: false,
-    },
-    {
-      sentence: "C",
-      flag: false,
-    },
-    {
-      sentence: "ANS",
-      flag: true,
-    },
-  ],
-  question: 'samplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesamplesamplequestionsentencesample',
-}
+import { mockData } from '../mock/questions-mock';
 
 export const Menu = (props: any) => {
   const { navigation } = props;
   
-
   function gotoAnswer () {
     navigation.navigate('Answer', {
-      selection: mockData.selection,
-      question: mockData.question,
+      props: mockData
     });
   }
 

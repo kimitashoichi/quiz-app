@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,20 +9,32 @@ import {
 
 // 問題文のprops(仮置き)
 export interface Answer {
-  sentence: string;
-  flag: boolean;
+  selection: {
+    sentence: string;
+    flag: boolean;
+  }[];
+  checkAnswer: any; // TODO:型付けする
 }
 
 export const Selection = (props: Answer) => {
+  const { checkAnswer } = props;
+  const [selections, setSelections] = useState(props.selection);
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>
-          {props.sentence}
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+          { selections.map((val) => {
+            return (
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={() => checkAnswer(val.flag)}>
+                  {val.sentence}
+                </Text>
+              </TouchableOpacity>
+            )
+            })
+          }
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -32,8 +43,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
     marginTop: 30,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignContent: 'flex-start',
+    justifyContent: 'space-between',
+    width: '55%',
   },
   button: {
     backgroundColor: 'rgb(29, 161, 242)',
