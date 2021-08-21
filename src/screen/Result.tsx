@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
   SafeAreaView,
@@ -9,9 +8,21 @@ import {
 } from 'react-native';
 
 export const Result = (props: any) => {
+  // TODO: any型なので型付けをする
+  const { route } = props;
+  const { navigation } = props;
+  const correctCount = route.params.props;
+
+  const gotoTitle = () => navigation.navigate('Title');
+
   return (
     <View style={styles.container}>
-      <Text>結果表示画面</Text>
+      <Text>結果表示</Text>
+      <Text>10問中 {correctCount}問正解！</Text>
+
+      <TouchableOpacity>
+        <Text style={styles.buttonText} onPress={() => gotoTitle()}>タイトルへ戻る</Text>
+      </TouchableOpacity>
     </View>
   );
 }

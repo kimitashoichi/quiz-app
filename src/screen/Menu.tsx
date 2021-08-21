@@ -16,7 +16,6 @@ export const Menu = (props: any) => {
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    console.log('adjustmentData', adjustmentData);
     if (adjustmentData.length > 0) {
       setLoad(true);
     } else {
