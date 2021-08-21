@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,10 +7,17 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { useGetQuestions } from '../customHook/GetQuestionHook';
+
 import { mockData } from '../mock/questions-mock';
 
 export const Menu = (props: any) => {
   const { navigation } = props;
+  const { questions, selections } = useGetQuestions();
+
+  useEffect(() => {
+    console.log(questions, selections);
+  }, [questions, selections]);
   
   function gotoAnswer () {
     navigation.navigate('Answer', {
