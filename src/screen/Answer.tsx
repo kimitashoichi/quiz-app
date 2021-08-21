@@ -6,8 +6,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay';
 
+import { LoadingSpinner } from '../component/LoadingSpinner';
 import { Question } from "../component/Question";
 import { Selection } from "../component/Selection";
 import { Problem } from '../interface/models';
@@ -50,7 +50,7 @@ export const Answer = (props: any) => {
         {questions.length - 1 >= count ? (
           <View style={styles.container}>
             <View>
-              <Text style={styles.countText}>{count}/10</Text>
+              <Text style={styles.countText}>{count + 1}/10</Text>
             </View>
 
             <Question questionText={questions[count].question}/>
@@ -66,13 +66,7 @@ export const Answer = (props: any) => {
           </View>
         ) : (
           <View style={styles.spinnerContainer}>
-            {/* <Text>サンプルテキスと</Text> */}
-            <Spinner
-              visible
-              color={"black"}
-              textContent={'Loading...'}
-              textStyle={styles.spinnerTextStyle}
-              overlayColor="rgba(0,100,255,0.8)" />
+            <LoadingSpinner />
           </View>
         )}
       </View>
