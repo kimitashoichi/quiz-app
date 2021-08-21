@@ -6,19 +6,11 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
+import { AnswerProps } from '../interface/components';
 
-// 問題文のprops(仮置き)
-export interface Answer {
-  selection: {
-    sentence: string;
-    flag: boolean;
-  }[];
-  checkAnswer: any; // TODO:型付けする
-}
-
-export const Selection = (props: Answer) => {
+export const Selection = (props: AnswerProps) => {
   const { checkAnswer } = props;
-  const [selections, setSelections] = useState(props.selection);
+  const [selections, setSelections] = useState(props.selections);
 
   return (
     <SafeAreaView>
@@ -26,8 +18,8 @@ export const Selection = (props: Answer) => {
           { selections.map((val) => {
             return (
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => checkAnswer(val.flag)}>
-                  {val.sentence}
+                <Text style={styles.buttonText} onPress={() => checkAnswer(val.correct)}>
+                  {val.answer_text}
                 </Text>
               </TouchableOpacity>
             )

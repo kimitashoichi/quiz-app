@@ -10,15 +10,9 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import { Question } from "../component/Question";
 import { Selection } from "../component/Selection";
+import { Problem } from '../interface/models';
 
-export interface Problem {
-  selection: {
-    sentence: string;
-    flag: boolean;
-  }[];
-  question: string;
-}
-
+// TOOD: propsに型付けをする
 export const Answer = (props: any) => {
   // TODO: any型なので型付けをする
   const { route } = props;
@@ -59,12 +53,12 @@ export const Answer = (props: any) => {
               <Text style={styles.countText}>{count}/10</Text>
             </View>
 
-            <Question sentence={questions[count].question}/>
+            <Question questionText={questions[count].question}/>
 
             <View style={styles.selectionBox}>
               <View style={styles.childBox}>
                 <Selection
-                  selection={questions[count].selection}
+                  selections={questions[count].selections}
                   checkAnswer={checkAnswerAndAddCount}/>
               </View>
             </View>

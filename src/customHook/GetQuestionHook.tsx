@@ -1,49 +1,31 @@
 import { useState, useEffect } from "react";
 import { db } from '../../firebase';
-
-// 1. まず問題を取得する
-// 2. 問題のドキュメントIDを保存しておく
-// 3. 選択肢データのquestion_idフィールドと問題のドキュメントIDが同じものを全て取得する
-// 4. 1-3を繰り返して10問分の問題データを取得
-// 5. 表示側で使用したいオブジェクトのデータ型に合わせて詰め込む
-
-export interface Problem {
-  selection: Selection;
-  question: string;
-}
-
-export interface Selection {
-  selection:[{
-      sentence: string;
-      flag: boolean;
-    }]
-}
-
-export interface GetData {
-  answer_text: string;
-  correct: boolean;
-  question_id: string;
-}
-
-interface Question {
-  id: string;
-  question: string;
-}
+import {
+  Question,
+  Selection,
+  Problem,
+  SelectionFromFirestore
+} from '../interface/models';
 
 export const useGetQuestions = () => {
-  // TODO：インターフェイスProblemの配列型にする
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [selections, setSelections] = useState<any>();
+  const [selections, setSelections] = useState<Selection[]>();
+  const [adjustmentData, setAdjustmentData] = useState<Problem[]>([]);
 
   // 問題データの取得
   useEffect(() => {
-    getData()
+    getData();
   }, []);
 
-  // 問題データが更新された後に選択肢データの取得が呼ばれる様にするため
+  // 問題データが更新された後に選択肢データを取得
   useEffect(() => {
-    getSelection(questions)
+    getSelection(questions);
   }, [questions]);
+
+  // 選択肢データの取得後にコンポーネントに渡すようのデータを作成
+  useEffect(() => {
+    dataAdjustment(questions, selections);
+  }, [selections]);
 
   // 問題文と問題文IDの取得処理
   const getData = async () => {
@@ -60,22 +42,39 @@ export const useGetQuestions = () => {
       }
       target.push(data);
     }
-    console.log(target);
     setQuestions(target);
   }
 
   // 選択肢の取得
   const getSelection = async (questions: Question[]) => {
+    // TODO: 型をつける
     const target: any = [];
     for (let i = 0; i < questions.length; i++) {
       const colRef = db.collection("answer-test").where('question_id', '==', questions[i].id);
-      const snapshots = await colRef.get();
+      // 無理やり型キャスト
+      // TODO: URLのやつに書き換え
+      // https://firebase.google.com/docs/reference/js/firebase.firestore.FirestoreDataConverter?hl=ja
+      const snapshots = await colRef.get() as SelectionFromFirestore
       const docs = snapshots.docs.map(doc => doc.data());
       target.push(docs);
     }
     setSelections(target);
-    console.log('getSelection', target);
+  }
+
+  // 問題データと選択肢データの調整
+  // 前提：questionsとselectionsのそれぞれの配列のインデックス番号は必ず一致している
+  // 前提が崩れるパターンが見つかったらidをもとに検索して、データを作成する方針に変更する
+  const dataAdjustment = (questions: any, selections: any) => {
+    const data: Problem[] = [];
+    for (let i = 0; i < questions.length; i++) {
+      let problem: Problem = {
+        selections: selections[i],
+        question: questions[i].question
+      }
+      data.push(problem);
+    }
+    setAdjustmentData(data);
   }
   
-  return { questions, selections };
+  return { questions, selections, adjustmentData };
 };
