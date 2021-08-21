@@ -8,24 +8,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export const Title = (props: any) => {
-  const { navigation } = props;
-
-  const goToMune = () => {
-    navigation.navigate('Menu')
-  }
-
+export const Result = (props: any) => {
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <View style={styles.titleBox}>
-          <Text style={styles.title}>タイトルがここに入ります</Text>
-          <TouchableOpacity style={styles.button} onPress={goToMune}>
-            <Text style={styles.buttonText}>スタート</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>結果表示画面</Text>
+    </View>
   );
 }
 
