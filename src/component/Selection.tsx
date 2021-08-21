@@ -17,8 +17,10 @@ export const Selection = (props: AnswerProps) => {
       <View style={styles.container}>
           { selections.map((val) => {
             return (
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => checkAnswer(val.correct)}>
+              <TouchableOpacity key={val.answer_text} style={styles.button}>
+                <Text
+                  style={styles.buttonText}
+                  onPress={() => checkAnswer(val.correct)}>
                   {val.answer_text}
                 </Text>
               </TouchableOpacity>
