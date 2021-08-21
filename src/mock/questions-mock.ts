@@ -29,6 +29,31 @@ export const mockData: Problem[] = [
   {
     selections: [
       {
+        answer_text: "A",
+        correct: true,
+        question_id: '1'
+      },
+      {
+        answer_text: "B",
+        correct: false,
+        question_id: '1'
+      },
+      {
+        answer_text: "C",
+        correct: false,
+        question_id: '1'
+      },
+      {
+        answer_text: "D",
+        correct: false,
+        question_id: '1'
+      },
+    ],
+    question: 'sampleQuestion1',
+  },
+  {
+    selections: [
+      {
         answer_text: "あ",
         correct: true,
         question_id: '2'
