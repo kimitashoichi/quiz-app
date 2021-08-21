@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -9,19 +8,19 @@ import {
 
 import { useGetQuestions } from '../customHook/GetQuestionHook';
 
-import { mockData } from '../mock/questions-mock';
-
 export const Menu = (props: any) => {
   const { navigation } = props;
-  const { questions, selections } = useGetQuestions();
+  const { adjustmentData } = useGetQuestions();
 
   useEffect(() => {
-    console.log(questions, selections);
-  }, [questions, selections]);
+    console.log(adjustmentData);
+  }, [adjustmentData]);
   
+  // issue/https://github.com/kimitashoichi/quiz-app/issues/18
+  // 問題データの取得前にボタンが押されるといきなり結果表示画面へ遷移してしまう
   function gotoAnswer () {
     navigation.navigate('Answer', {
-      props: mockData
+      props: adjustmentData
     });
   }
 

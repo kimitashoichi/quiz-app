@@ -1,65 +1,77 @@
-import { Problem } from '../screen/Answer';
+import { Problem } from '../interface/models';
 
 export const mockData: Problem[] = [
   {
-    selection: [
+    selections: [
       {
-        sentence: "A",
-        flag: false,
+        answer_text: "A",
+        correct: true,
+        question_id: '1'
       },
       {
-        sentence: "B",
-        flag: false,
+        answer_text: "B",
+        correct: false,
+        question_id: '1'
       },
       {
-        sentence: "C",
-        flag: false,
+        answer_text: "C",
+        correct: false,
+        question_id: '1'
       },
       {
-        sentence: "ANS",
-        flag: true,
+        answer_text: "D",
+        correct: false,
+        question_id: '1'
       },
     ],
     question: 'sampleQuestion1',
   },
   {
-    selection: [
+    selections: [
       {
-        sentence: "1",
-        flag: false,
+        answer_text: "あ",
+        correct: true,
+        question_id: '2'
       },
       {
-        sentence: "2",
-        flag: false,
+        answer_text: "い",
+        correct: false,
+        question_id: '2'
       },
       {
-        sentence: "3",
-        flag: false,
+        answer_text: "う",
+        correct: false,
+        question_id: '2'
       },
       {
-        sentence: "ANS",
-        flag: true,
+        answer_text: "え",
+        correct: false,
+        question_id: '2'
       },
     ],
     question: 'sampleQuestion2',
   },
   {
-    selection: [
+    selections: [
       {
-        sentence: "あ",
-        flag: false,
+        answer_text: "1",
+        correct: true,
+        question_id: '3'
       },
       {
-        sentence: "い",
-        flag: false,
+        answer_text: "2",
+        correct: false,
+        question_id: '3'
       },
       {
-        sentence: "う",
-        flag: false,
+        answer_text: "3",
+        correct: false,
+        question_id: '3'
       },
       {
-        sentence: "ANS",
-        flag: true,
+        answer_text: "4",
+        correct: false,
+        question_id: '3'
       },
     ],
     question: 'sampleQuestion3',

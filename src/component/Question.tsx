@@ -4,16 +4,13 @@ import {
   Text,
   View,
 } from 'react-native';
+// interfaceにする必要はないかも
+import { QuestionProps } from '../interface/components';
 
-interface Question {
-  sentence: string;
-}
-
-export const Question = (question: Question) => {
-
+export const Question = (question: QuestionProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.questionText}>{question.sentence}</Text>
+      <Text style={styles.questionText}>{question.questionText}</Text>
     </View>
   );
 }
