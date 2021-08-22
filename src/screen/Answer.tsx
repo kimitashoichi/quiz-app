@@ -47,7 +47,6 @@ export const Answer = (props: any) => {
     });
   }
   
-  
   return (
       <View style={styles.container}>
         {questions.length - 1 >= count ? (
