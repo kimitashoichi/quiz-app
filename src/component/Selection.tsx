@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,8 +9,7 @@ import {
 import { AnswerProps } from '../interface/components';
 
 export const Selection = (props: AnswerProps) => {
-  const { checkAnswer } = props;
-  const [selections, setSelections] = useState(props.selections);
+  const { checkAnswer, selections } = props;
 
   return (
     <SafeAreaView>
