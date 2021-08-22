@@ -38,12 +38,15 @@ export const Answer = (props: any) => {
     if (flag) {
       setCorrectCount(correctCount+1)
     };
-
-    // 問題の表示切り替え
     setCount(count+1);
   }
 
-  const gotoAnswer = () => navigation.navigate('Result');
+  const gotoAnswer = () => {
+    navigation.navigate('Result', {
+      props: correctCount,
+    });
+  }
+  
   
   return (
       <View style={styles.container}>
