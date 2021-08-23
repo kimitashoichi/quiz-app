@@ -12,7 +12,7 @@ export const Title = (props: any) => {
   const { navigation } = props;
 
   const goToMune = () => {
-    navigation.navigate('Menu')
+    navigation.navigate('Menu');
   }
 
   return (

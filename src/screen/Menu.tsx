@@ -11,7 +11,7 @@ import { LoadingSpinner } from '../component/LoadingSpinner';
 
 export const Menu = (props: any) => {
   const { navigation } = props;
-  const { adjustmentData } = useGetQuestions();
+  const { adjustmentData, setLevel } = useGetQuestions();
 
   const [load, setLoad] = useState(false);
 
@@ -19,14 +19,14 @@ export const Menu = (props: any) => {
     if (adjustmentData.length > 0) {
       setLoad(true);
     } else {
-      setLoad(false);
+      setLoad(true);
     }
-    console.log('load', load);
   }, [adjustmentData, load]);
   
   // issue/https://github.com/kimitashoichi/quiz-app/issues/18
   // 問題データの取得前にボタンが押されるといきなり結果表示画面へ遷移してしまう
   function gotoAnswer () {
+    setLevel('first');
     navigation.navigate('Answer', {
       props: adjustmentData
     });
