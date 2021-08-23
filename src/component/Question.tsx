@@ -26,5 +26,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     overflow: 'scroll',
     width: 300,
-  }
+  },
 });
