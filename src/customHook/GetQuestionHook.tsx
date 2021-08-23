@@ -50,7 +50,6 @@ export const useGetQuestions = () => {
       }
       target.push(data);
     }
-    console.log('setQuestions', target);
     setQuestions(target);
   }
 
@@ -69,7 +68,6 @@ export const useGetQuestions = () => {
       const docs = snapshots.docs.map(doc => doc.data());
       target.push(docs);
     }
-    console.log('setSelections', target);
     setSelections(target);
   }
 
@@ -85,7 +83,6 @@ export const useGetQuestions = () => {
       }
       data.push(problem);
     }
-    console.log('setAdjustmentData', data);
     setAdjustmentData(data);
   }
   
