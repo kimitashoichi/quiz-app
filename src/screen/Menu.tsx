@@ -7,51 +7,55 @@ import {
 } from 'react-native';
 
 import { useGetQuestions } from '../customHook/GetQuestionHook';
-import { LoadingSpinner } from '../component/LoadingSpinner';
 
 export const Menu = (props: any) => {
   const { navigation } = props;
   const { adjustmentData, setLevel } = useGetQuestions();
 
+  // 問題データ取得完了フラグ
   const [load, setLoad] = useState(false);
+
+  // 問題データの取得先コレクション指定
+  const [correction, setCorrection] = useState('');
 
   useEffect(() => {
     if (adjustmentData.length > 0) {
       setLoad(true);
-    } else {
-      setLoad(true);
     }
-  }, [adjustmentData, load]);
+  }, [adjustmentData]);
+
+  // loadが変更されたらgotoAnswerを再度呼び出す
+  useEffect(() => {
+    gotoAnswer(correction);
+  }, [load])
   
   // issue/https://github.com/kimitashoichi/quiz-app/issues/18
   // 問題データの取得前にボタンが押されるといきなり結果表示画面へ遷移してしまう
-  function gotoAnswer () {
-    setLevel('first');
-    navigation.navigate('Answer', {
-      props: adjustmentData
-    });
+  function gotoAnswer (level: string) {
+    setCorrection(level)
+    if (load) {
+      navigation.navigate('Answer', {
+        props: adjustmentData
+      });
+    } else {
+      setLevel(level);
+    }
   }
 
   return (
       <View style={styles.container}>
-        { load ?
           <View>
             <Text style={styles.title}>Menu</Text>
-            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer()} >
+            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer('first')} >
               <Text style={styles.buttonText}>初級</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer()}>
+            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer('first')}>
               <Text style={styles.buttonText}>中級</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer()}>
+            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer('first')}>
               <Text style={styles.buttonText}>上級</Text>
             </TouchableOpacity>
           </View>
-        :
-          <View style={styles.spinnerContainer}>
-            <LoadingSpinner />
-          </View>
-        }
       </View>
   );
 }
