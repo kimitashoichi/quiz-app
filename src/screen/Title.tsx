@@ -1,12 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
 } from 'react-native';
 
 export const Title = (props: any) => {
@@ -22,6 +19,7 @@ export const Title = (props: any) => {
         <Text style={styles.title}>タイトル</Text>
         <Button
           buttonStyle={styles.button}
+          titleStyle={styles.buttonText}
           title="スタート"
           raised
           onPress={goToMune}/>
@@ -55,8 +53,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: '900',
-    fontSize: 16,
+    fontSize: 25,
     textAlign: 'center',
-    marginTop: 35,
-  },
+  }
 });
