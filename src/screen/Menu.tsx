@@ -1,9 +1,11 @@
 import React, { useState ,useEffect } from 'react';
+import { Button } from 'react-native-elements';
 import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  SafeAreaView
 } from 'react-native';
 
 import { useGetQuestions } from '../customHook/GetQuestionHook';
@@ -43,20 +45,27 @@ export const Menu = (props: any) => {
   }
 
   return (
-      <View style={styles.container}>
-          <View>
-            <Text style={styles.title}>Menu</Text>
-            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer('first')} >
-              <Text style={styles.buttonText}>初級</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer('first')}>
-              <Text style={styles.buttonText}>中級</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => gotoAnswer('first')}>
-              <Text style={styles.buttonText}>上級</Text>
-            </TouchableOpacity>
-          </View>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Menu</Text>
+          <Button
+            buttonStyle={styles.button}
+            title="初級"
+            raised
+            titleStyle={styles.buttonText}
+            onPress={() => gotoAnswer('first')}/>
+          <Button
+            buttonStyle={styles.button}
+            title="中級"
+            raised
+            titleStyle={styles.buttonText}
+            onPress={() => gotoAnswer('first')}/>
+          <Button
+            buttonStyle={styles.button}
+            title="上級"
+            raised
+            titleStyle={styles.buttonText}
+            onPress={() => gotoAnswer('first')}/>
+      </SafeAreaView>
   );
 }
 
@@ -65,9 +74,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly'
   },
   title: {
+    textAlign: 'center',
     fontSize: 50,
     marginBottom: 20,
   },
@@ -75,16 +85,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(29, 161, 242)',
     width: 150,
     height: 80,
-    marginBottom: 30,
   },
   buttonText: {
     fontWeight: '900',
-    fontSize: 16,
+    fontSize: 25,
     textAlign: 'center',
-    marginTop: 30,
-  },
-  spinnerContainer: {
-    flex: 1,
-    justifyContent: 'center',
   }
 });
