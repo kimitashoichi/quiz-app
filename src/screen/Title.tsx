@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -16,16 +17,16 @@ export const Title = (props: any) => {
   }
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <View style={styles.titleBox}>
-          <Text style={styles.title}>タイトルがここに入ります</Text>
-          <TouchableOpacity style={styles.button} onPress={goToMune}>
-            <Text style={styles.buttonText}>スタート</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.titleBox}>
+        <Text style={styles.title}>タイトル</Text>
+        <Button
+          buttonStyle={styles.button}
+          title="スタート"
+          raised
+          onPress={goToMune}/>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -37,19 +38,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleBox: {
+    alignItems: 'center',
     textAlign: 'center',
     flex: 1,
     height: 50,
     marginTop: 200,
   },
   title: {
-    fontSize: 50,
+    fontSize: 40,
+    marginBottom: 50,
   },
   button: {
-    margin: 'auto',
-    marginTop: 70,
     backgroundColor: 'rgb(29, 161, 242)',
-    width: 150,
+    width: 300,
     height: 100,
   },
   buttonText: {
