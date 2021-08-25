@@ -11,16 +11,14 @@ import { LoadingSpinner } from '../component/LoadingSpinner';
 import { Question } from "../component/Question";
 import { Selection } from "../component/Selection";
 import { Problem } from '../interface/models';
+import { AnswerProps } from '../interface/components';
 
-// TOOD: propsに型付けをする
-export const Answer = (props: any) => {
-  // TODO: any型なので型付けをする
-  const { route } = props;
-  const { navigation } = props;
+export const Answer = (props: AnswerProps) => {
+  const { route, navigation } = props;
 
   const [count, setCount] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
-  const [questions, setQuestions] = useState<Problem[]>(route.params.props);
+  const [questions] = useState<Problem[]>(route.params.props);
 
   useEffect(() => {
     // ユーザーが回答が終了していた場合スピナーを表示させて1秒後に結果画面へ遷移させる

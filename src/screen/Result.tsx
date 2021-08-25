@@ -5,8 +5,9 @@ import {
 } from 'react-native';
 import { PricingCard } from 'react-native-elements';
 
-export const Result = (props: any) => {
-  // TODO: any型なので型付けをする
+import { ResultProps } from '../interface/components';
+
+export const Result = (props: ResultProps) => {
   const { route } = props;
   const { navigation } = props;
   const correctCount = route.params.props;

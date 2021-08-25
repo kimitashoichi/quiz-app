@@ -5,10 +5,11 @@ import {
   Text,
   View,
 } from 'react-native';
+import { TitleProps } from '../interface/components';
 
-export const Title = (props: any) => {
+export const Title = (props: TitleProps) => {
   const { navigation } = props;
-
+  
   const goToMune = () => {
     navigation.navigate('Menu');
   }
