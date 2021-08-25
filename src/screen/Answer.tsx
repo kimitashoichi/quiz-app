@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Card } from 'react-native-elements'
 
 import { LoadingSpinner } from '../component/LoadingSpinner';
 import { Question } from "../component/Question";
@@ -51,18 +51,16 @@ export const Answer = (props: any) => {
       <View style={styles.container}>
         {questions.length - 1 >= count ? (
           <View style={styles.container}>
-            <View>
+            <Card containerStyle={styles.cardContainer}>
               <Text style={styles.countText}>{count + 1}/10</Text>
-            </View>
+            </Card>
 
             <Question questionText={questions[count].question}/>
 
             <View style={styles.selectionBox}>
-              <View style={styles.childBox}>
-                <Selection
-                  selections={questions[count].selections}
-                  checkAnswer={checkAnswerAndAddCount}/>
-              </View>
+              <Selection
+                selections={questions[count].selections}
+                checkAnswer={checkAnswerAndAddCount}/>
             </View>
             <StatusBar style="auto" />
           </View>
@@ -84,7 +82,6 @@ const styles = StyleSheet.create({
   countText: {
     fontSize: 30,
     fontWeight: 'bold',
-    paddingTop: 20,
   },
   selectionBox: {
     flexDirection: 'row',
@@ -94,15 +91,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '90%',
   },
-  childBox: {
-    position: 'relative'
-  },
-  spinnerTextStyle: {
-    color: 'black',
-    fontSize: 15,
-  },
   spinnerContainer: {
     flex: 1,
     justifyContent: 'center',
   },
+  cardContainer: {
+    width: '90%',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  }
 });

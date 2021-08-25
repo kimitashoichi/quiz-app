@@ -5301,6 +5301,20 @@ react-native-dotenv@^3.2.0:
   dependencies:
     dotenv "^10.0.0"
 
+react-native-elements-universe@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-elements-universe/-/react-native-elements-universe-0.0.0.tgz#df8dc2e800cc26c73e019bc337f1bb520175a0ee"
+  integrity sha512-kvwLarf0SSTshAjEdgIFbP8dtfu9siUpRFckzxa658tdvwt8PczYoS42JBYX0RM0Q1S6IjwHVSAOiEhDuDMAig==
+  dependencies:
+    "@types/react-native-vector-icons" "^6.4.6"
+    color "^3.1.2"
+    deepmerge "^4.2.2"
+    hoist-non-react-statics "^3.3.2"
+    lodash.isequal "^4.5.0"
+    opencollective-postinstall "^2.0.3"
+    react-native-safe-area-context "^3.1.9"
+    react-native-size-matters "^0.3.1"
+
 react-native-elements@^3.4.2:
   version "3.4.2"
   resolved "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.2.tgz"
@@ -5359,6 +5373,11 @@ react-native-safe-area-context@3.2.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.2.0.tgz"
   integrity sha512-k2Nty4PwSnrg9HwrYeeE+EYqViYJoOFwEy9LxL5RIRfoqxAq/uQXNGwpUg2/u4gnKpBbEPa9eRh15KKMe/VHkA==
+
+react-native-safe-area-context@^3.1.9:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.3.0.tgz#6e0b45baa031589ec9c54f8359ace166a36aa5e5"
+  integrity sha512-IrCNx56LO9RJ75yCf2CSSO1ceLj3mvxTAF+HWnehaeRIfF4pIcIn3WEUlXulFiha641OKS5X0+1XZCbbQ7pITA==
 
 react-native-screens@~3.4.0:
   version "3.4.0"
