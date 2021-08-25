@@ -4,14 +4,15 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Card } from 'react-native-elements'
 // interfaceにする必要はないかも
 import { QuestionProps } from '../interface/components';
 
 export const Question = (question: QuestionProps) => {
   return (
-    <View style={styles.container}>
+    <Card containerStyle={styles.container}>
       <Text style={styles.questionText}>{question.questionText}</Text>
-    </View>
+    </Card>
   );
 }
 
@@ -26,5 +27,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     overflow: 'scroll',
     width: 300,
-  }
+  },
 });
