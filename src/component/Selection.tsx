@@ -5,17 +5,18 @@ import {
   View,
 } from 'react-native';
 import { Button } from 'react-native-elements';
-import { AnswerProps } from '../interface/components';
+import { SelectionProps } from '../interface/components';
 
-export const Selection = (props: AnswerProps) => {
+export const Selection = (props: SelectionProps) => {
   const { checkAnswer, selections } = props;
-
+  
   return (
     <SafeAreaView>
       <View style={styles.container}>
           { selections.map((val) => {
               return (
                 <Button
+                  key={val.answer_text}
                   buttonStyle={styles.button}
                   containerStyle={styles.buttonContainer}
                   title={val.answer_text}

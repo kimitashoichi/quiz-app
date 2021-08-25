@@ -9,9 +9,8 @@ import {
 
 export const useGetQuestions = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [selections, setSelections] = useState<Selection[]>();
+  const [selections, setSelections] = useState<Selection[][]>();
   const [adjustmentData, setAdjustmentData] = useState<Problem[]>([]);
-  
   
   // 問題レベルごとにDBを変更するためのState
   const [level, setLevel] = useState<string>();
@@ -35,12 +34,10 @@ export const useGetQuestions = () => {
 
   // 問題文と問題文IDの取得処理
   const getData = async () => {
-    console.log(ref.current, `${ref.current}-question`)
     const colRef = db.collection(`${ref.current}-question`).limit(10);
     const snapshots = await colRef.get();
     const ids = snapshots.docs.map(doc => doc.id);
     const docs: string[] = snapshots.docs.map(doc => doc.data().question);
-    console.log(docs);
 
     const target: Question[] = [];
     for (let i = 0; i < ids.length; i++) {
@@ -55,15 +52,9 @@ export const useGetQuestions = () => {
 
   // 選択肢の取得
   const getSelection = async (questions: Question[]) => {
-    console.log(ref.current)
-    // TODO: 型をつける
-    const target: any = [];
+    const target: Selection[][] = [];
     for (let i = 0; i < questions.length; i++) {
-      console.log(ref.current);
       const colRef = db.collection(`${ref.current}-answer`).where('question_id', '==', questions[i].id);
-      // 無理やり型キャスト
-      // TODO: URLのやつに書き換え
-      // https://firebase.google.com/docs/reference/js/firebase.firestore.FirestoreDataConverter?hl=ja
       const snapshots = await colRef.get() as SelectionFromFirestore
       const docs = snapshots.docs.map(doc => doc.data());
       target.push(docs);
