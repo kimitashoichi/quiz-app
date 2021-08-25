@@ -3,8 +3,6 @@ import { Button } from 'react-native-elements';
 import {
   StyleSheet,
   Text,
-  View,
-  TouchableOpacity,
   SafeAreaView
 } from 'react-native';
 
