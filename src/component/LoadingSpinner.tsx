@@ -8,7 +8,7 @@ export const LoadingSpinner = () => {
       color={"black"}
       textContent={'Loading...'}
       textStyle={spinnerTextStyle}
-      overlayColor="rgba(0,100,255,0.8)" />
+      overlayColor="rgba(0,100,255,0.5)" />
   )
 };
 

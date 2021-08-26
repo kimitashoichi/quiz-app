@@ -26,3 +26,7 @@ export interface ResultProps {
 export interface TitleProps {
   navigation: NavigationProp<ParamListBase, string, any, any>
 }
+
+export interface JudgmentProps {
+  correct: boolean;
+}
